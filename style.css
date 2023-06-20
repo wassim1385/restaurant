@@ -1,0 +1,913 @@
+/*
+    Theme Name: Restaurant Le Régal
+    Theme URI:
+    Author: Wassim Jelleli
+    Author URI: https://www.linkedin.com/in/wassim-jelleli/
+    Description: Theme designed for a restaurant
+    Version: 1.0
+    Tags:CSS Grid, Flexbox ready, mobile first, restaurant theme
+    Text Domain: leregal
+*/
+:root {
+    /** Fonts **/
+    --mainFont : 'Staatliches', cursive;
+    --textFont : 'Open Sans', sans-serif;
+    --secondaryFont : 'Raleway', sans-serif;
+    /** COLORS **/
+    --primary : #ff5b00;
+    --darkGray : #2f2e2e;
+    --lightGray : #ebebeb;
+    --white : #fff;
+    --black : #000
+}
+html{
+    box-sizing: border-box;
+    font-size: 62.5%; /* Now 10px = 1rem! */
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+*, *:before, *:after{
+    box-sizing: inherit;
+}
+body{
+    font-family: var(--secondaryFont);
+    font-size: 1.6rem;
+    line-height: 2;
+}
+/** Globals **/
+h1{
+    font-size: 4.8rem;
+    text-transform: uppercase;
+    color: var(--white);
+}
+h2{
+    font-size: 4rem;
+    text-transform: uppercase;
+}
+h3{
+    font-size: 3rem;
+}
+h4{
+    font-size: 2.4rem;
+}
+.clear, .clear::after{
+    content: '';
+    clear: both;
+    display: block;
+}
+img{
+    max-width: 100%;
+    height: auto; /** These 2 properties make the image responsive **/
+}
+a{
+    text-decoration: none;
+}
+.container{
+    max-width: 110rem;
+    width: 100%;
+    margin: 0 auto;
+}
+.sr-text{
+    display: none;
+}
+.text-center{
+    text-align: center;
+}
+ul{
+    list-style: none;
+}
+.button{
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    border-radius: .8rem;
+    padding: 1.5rem 8rem;
+    margin-top: 2rem;
+    display: inline-block;
+    font-weight: 700;
+    cursor: pointer;
+}
+.primary{
+    background-color: var(--primary);
+    color: var(--white);
+}
+.secondary{
+    background-color: var(--white);
+    color: var(--primary);
+}
+/** Header **/
+header.site-header{
+    border-bottom: 1px solid #c1c1c1;
+}
+.logo{
+    text-align: center;
+}
+@media (min-width: 768px) {
+    .logo{
+        text-align: left;
+    }
+}
+@media (min-width: 992px) {
+    .logo{
+        text-align: center;
+    }
+}
+.logo img{
+    width: 210px;
+}
+@media (min-width: 768px) {
+    header.site-header .container{
+        position: relative;
+    }
+    header.site-header .header-info{
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+.address{
+    display: block;
+    clear: both; /* on peut meme mettre clear:right puisque l'élément .socials ul est positionné à droite */
+    padding-top: 1rem;
+}
+.address p{
+    margin: 0;
+    text-align: center;
+    font-size: 1.4rem;
+}
+@media (min-width: 768px) {
+    .address p{
+        text-align: right;
+    }
+}
+
+/** Social Menu **/
+.socials ul{
+    padding: 0;
+    text-align: center;
+}
+@media (min-width: 768px) {
+    .socials ul{
+        float: right;
+    }
+}
+.socials ul li{
+    display: inline-block;
+}
+.socials ul li a:before{
+    font-family: 'FontAwesome';
+    display: inline-block;
+    vertical-align: text-top;
+    content: '\f08e';
+    padding: 0 0.5rem;
+    font-size: 3rem;
+    color: #000;
+}
+.socials li a[href*="facebook"]::before{
+    content: '\f09a';
+}
+.socials li a[href*="instagram"]::before{
+    content: '\f16d';
+}
+.socials li a[href*="youtube"]::before{
+    content: '\f167';
+}
+
+/** Main Menu **/
+.site-nav{
+    display: none;
+}
+@media (min-width: 768px) {
+    .site-nav{
+        display: block;
+    }
+}
+.site-nav ul{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: table;
+}
+@media (min-width: 768px) {
+    .site-nav ul li{
+        display: table-cell;
+        width: 1%; /* tous les li prennent le meme width */
+    }
+}
+
+.site-nav ul li a{
+    text-align: center;
+    padding: 1rem 0;
+    display: block;
+    text-transform: uppercase;
+    font-family: var(--mainFont);
+    color: var(--black);
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+    font-size: 2.4rem;
+}
+.site-nav ul li.current_page_item, .single-specialties .site-nav ul li.menu-item-35, .single-post .site-nav ul li.current_page_parent{
+    border-bottom: var(--primary) 4px solid;
+}
+/** Responsive Menu **/
+@media (max-width: 767px) {
+    .mobile-menu span{
+        height: 4rem;
+        line-height: 4rem; /* To align vertically put same pixels as heigth*/
+        background-color: var(--primary);
+        width: 100%;
+        display: block;
+        color: var(--white);
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+    .mobile-menu span .fa{
+        margin-right: 0.5rem;
+    }
+}
+@media (min-width: 768px) {
+    .mobile-menu span{
+        display: none;
+    }
+}
+/** Hero Image **/
+.hero{
+    background-position: top  center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-attachment: fixed;
+}
+.hero:after{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.8);
+}
+.hero-text h1{
+    z-index: 2;
+    position: relative;/* Must add position attribute because the overlay has position absolute */
+    margin: 0;
+    font-family: var(--mainFont);
+    letter-spacing: .6rem;
+}
+.main-content{
+    padding: 6rem;
+    background: var(--white);
+    position: relative;
+}
+@media (min-width: 768px) {
+    .main-content{
+        margin-top: -9rem;
+    }
+}
+.content-text p{
+    margin: 0;
+    font-size: 1.8rem;
+    line-height: 5rem;
+}
+/** BOXES **/
+@media (min-width: 768px) {
+    .box-info{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+.box{
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    color: var(--white);
+    text-align: center;
+}
+@media (min-width: 768px) {
+    .box{
+        grid-template-columns: unset;
+        grid-template-rows: 1fr 1fr;
+    }
+}
+.box:nth-child(1){
+    background-color: #f19f30;
+}
+.box:nth-child(2){
+    background-color: #127427;
+}
+.box:nth-child(3){
+    background-color: #a61206;
+}
+@media (min-width: 768px) {
+    .box:nth-child(2) div{
+        order: 1;
+    }
+    .box:nth-child(2) img{
+        order: 2;
+    }
+}
+
+.content-box{
+    display: grid;
+    grid-template-rows: 10% 20% 60% 10%;
+    grid-template-areas: "."
+                        "top"
+                        "text"
+                        ".";
+}
+@media (min-width: 768px) {
+    .content-box{
+        grid-template-rows: 20% 20% 40% 20%;
+        align-items: center;
+        padding: 1rem;
+    }
+}
+.content-box h3{
+    grid-area: top;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-family: var(--secondaryFont);
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+.content-box p{
+    grid-area: text;
+}
+/** Footer **/
+footer{
+    margin-top: 3rem;
+    padding: 3rem 0;
+    border-top: 1px solid #c1c1c1;
+}
+footer nav ul{
+    display: flex;
+    justify-content: center;
+}
+footer nav ul li:last-child .seperator{
+    display: none;
+}
+footer nav ul li:last-of-type{
+    margin-right: 0;
+}
+footer nav ul li{
+    margin-right: .5rem;
+}
+footer nav ul li a{
+    color: var(--black);
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+footer p{
+    font-size: 1.4rem;
+}
+footer .copyright{
+    font-weight: 700;
+}
+/** Grid **/
+.grid-menu{
+    margin-bottom: 4rem;
+}
+.grid-menu:last-of-type{
+    margin-bottom: 0;
+}
+@media (min-width: 768px) {
+    .container-grid::after{
+        content: '';
+        display: block;
+        clear: both;
+    }
+    [class*='columns']{
+        padding: 0 1rem;
+        float: left;
+    }
+    .columns1-4{
+        width: 25%;
+    }
+    .columns2-4{
+        width: 50%;
+    }
+    .columns1-3{
+        width: 33.3%;
+    }
+    .columns2-3{
+        width: 66.6%;
+    }
+    .columns3-4{
+        width: 75%;
+    }
+}
+/** Specialties**/
+.specialties{
+    padding: 0 6rem;
+}
+.specilaty-img{
+    position: relative;
+    box-shadow: 2px 2px 5px var(--darkGray);
+    transition: box-shadow .4s;
+}
+.specilaty-img img{
+    display: block;
+}
+.specilaty-img::after{
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+80 */
+    background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 60%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 60%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 60%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+}
+.specialties h3{
+    text-transform: uppercase;
+    position: relative;
+    padding-left: 6rem;
+    display: inline-block;
+    color: var(--primary);
+}
+.specialties h3:before{
+    width: 4rem;
+    height: 0.2rem;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 2.9rem;
+    background-color: var(--primary);
+}
+.speciality-content{
+    padding: 2rem;
+}
+.speciality-content:hover .specilaty-img{
+    box-shadow: 2px 2px 10px var(--darkGray);
+}
+.speciality-content a{
+    color: var(--black);
+}
+.speciality-content h4{
+    border-bottom: 1px solid #dfdfdf;
+    padding: 1.5rem 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 2.4rem;
+}
+.speciality-content h4 span{
+    float: right;
+    color: var(--primary);
+    font-family: var(--mainFont);
+    font-size: 3.4rem;
+    letter-spacing: .2rem;
+}
+.speciality-content p{
+    color: var(--darkGray);
+    margin-top: 1rem;
+}
+
+/** Single specialty template **/
+.single-specialties p.ingredients, .single-specialties p.price{
+    font-size: 3rem;
+    color: var(--primary);
+}
+.single-specialties p.price span{
+    color: var(--black);
+    font-family: var(--mainFont);
+}
+/** Blog **/
+article.entry{
+    margin-top: 3rem;
+}
+header.entry-header{
+    margin-top: 2rem;
+}
+header.entry-header .date{
+    background-color: var(--primary);
+    float: left;
+    height: 7rem;
+    width: 7rem;
+    padding-top: .5rem;
+    text-align: center;
+    margin-right: 2rem;
+}
+header.entry-header .date time{
+   /* font-size: 3rem;*/
+    font-weight: 700;
+}
+header.entry-header .date time span{
+    font-size: 1.6rem;
+    display: block;
+    text-transform: uppercase;
+}
+header.entry-header .entry-title{
+    float: right;
+    width: calc(100% - 9rem);
+}
+header.entry-header h2{
+    text-transform: uppercase;
+    font-size: 2.4rem;
+    font-weight: 700;
+    position: relative;
+    bottom: 2rem;
+}
+header.entry-header p.author{
+    text-transform: uppercase;
+    color: var(--black);
+    font-size: 2.4rem;
+    font-family: var(--textFont);
+    position: relative;
+    bottom: 1.4rem;
+}
+p.author i{
+    color: var(--primary);
+    font-size: 3rem;
+}
+div.entry-content p{
+    line-height: 2.8rem;
+    text-align: justify;
+}
+/** Sidebar **/
+aside.sidebar{
+    margin-top: 1rem;
+}
+aside .searchform{
+    position: relative;
+}
+aside .searchform #searchsubmit{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    text-indent: -99999px;
+    width: 4.2rem;
+    height: 4.2rem;
+    background-color: var(--primary);
+    background-image: url(img/search.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+}
+aside .searchform #s{
+    padding: 1rem;
+    width: 100%;
+}
+aside.sidebar .widget{
+    margin-bottom: 2rem;
+}
+aside.sidebar .widget h3{
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 2.8rem;
+}
+aside.sidebar .widget ul li a{
+    color: var(--black);
+    transition: color .4s ease;
+}
+aside.sidebar .widget ul li a:hover{
+    color: var(--primary);
+}
+/** Gallery **/
+#gallery-1 .gallery-item{
+    width: 50% !important;
+    margin: 0;
+    padding: 0 1rem !important;
+}
+@media (min-width: 768px) {
+    #gallery-1 .gallery-item{
+        width: 25% !important;
+    }
+}
+#gallery-1 .gallery-item img{
+    border: none !important;
+}
+/** Contact Page **/
+.reservation {
+    background-image: url(img/bg_contact.jpg);
+    background-repeat: no-repeat;
+    background-position: top left;
+}
+@media (min-width: 768px) {
+    .reservation-info{
+        margin-left: 50%;
+    }
+}
+.reservation-form h2{
+    font-weight: 700;
+    font-size: 2rem;
+    font-family: var(--secondaryFont);
+}
+.reservation-form .field{
+    margin-bottom: 2rem;
+    width: 100%;
+}
+.reservation-form .field input,
+.reservation-form .field textarea{
+    width: 100%;
+    border: 3px solid #000;
+    padding: 1.5rem 1rem;
+    font-size: 1.6rem;
+}
+.reservation-form .field textarea{
+    height: 20rem;
+}
+form.reservation-form ::-webkit-input-placeholder{
+    color: var(--black) !important;
+}
+form.reservation-form ::-moz-placeholder{
+    color: var(--black) !important;
+}
+form.reservation-form :-moz-placeholder{
+    color: var(--black) !important;
+}
+form.reservation-form ::-ms-input-placeholder{
+    color: var(--black) !important;
+}
+form.reservation-form input[type="submit"]{
+    border: none;
+}
+/** Front Page Hero **/
+.home div.hero{
+    height: 65rem;
+}
+.home .hero-text p{
+    color: var(--white);
+    line-height: 4rem;
+}
+.home .hero-text{
+    position: relative;
+    z-index: 99;
+    margin: 0 auto;
+}
+@media (min-width: 768px) {
+    .home .hero-text{
+        width: 70%;
+    }
+}
+@media (min-width: 768px) {
+    .home .main-content{
+        margin-top: 0;
+    }
+}
+.home h2{
+    margin-bottom: 2rem;
+    color: var(--primary);
+}
+/** Front page specilaties **/
+.specialty-content{
+    position: relative;
+    overflow: hidden;
+}
+.specialty-content .specialty-info{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.75);
+    text-align: center;
+    padding: .5rem;
+    color: var(--white);
+    opacity: 0;
+    transition: all .8s ease-in-out;
+}
+.specialty-content img{
+    display: block;
+}
+.specialty-content:hover .specialty-info{
+    top: 0%;
+    opacity: 1;
+}
+.specialty-content .specialty-info .price{
+    font-weight: 700;
+    font-size: 3.2rem;
+    font-family: var(--mainFont);
+    letter-spacing: .2rem;
+    margin: 0;
+}
+.specialty-content .specialty-info h3{
+    font-size: 2.2rem;
+    margin-top: 4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+.specialty-content .specialty-info p{
+    font-family: var(--textFont);
+}
+.specialty-content .specialty-info a{
+    margin: 0;
+}
+@media (max-width: 767px) {
+    .specialty-content{
+        overflow: visible;
+        display: block;
+        margin-bottom: 6rem;
+    }
+    .specialty-content .specialty-info{
+        position: relative;
+        opacity: 1;
+        background-color: var(--primary);
+        padding: 3rem;
+    }
+    .specialty-content img{
+        width: 100%;
+        height: auto;
+    }
+    .specialty-content .specialty-info h3{
+        color: var(--darkGray);
+    }
+    .specialty-content .specialty-info a.primary{
+        background: var(--white);
+        color: var(--primary);
+    }
+}
+/** Front page Ingredients **/
+section.ingredients {
+    background-image: url('img/ingredients.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    margin-top: 6rem;
+    padding: 8rem;
+    color: var(--white);
+    position: relative;
+    z-index: 5;
+}
+section.ingredients::after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background-color: rgba(0,0,0,.7);
+    z-index: -99;
+}
+section.ingredients .ingredients-description{
+    margin-bottom: 6rem;
+}
+@media (min-width: 768px) {
+    section.ingredients .container-grid{
+        display: flex;
+        align-items: center;
+    }
+    section.ingredients .ingredients-description{
+        margin-bottom: 0;
+    }
+}
+section.ingredients h3{
+    text-transform: uppercase;
+    font-family: var(--mainFont);
+    letter-spacing: .3rem;
+    line-height: 5rem;
+    font-size: 3.8rem;
+}
+section.ingredients p{
+    line-height: 4rem;
+    margin-bottom: 2rem;
+    text-align: justify;
+}
+@media (max-width: 767px) {
+    section.ingredients a{
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+    }
+}
+/** Front Page Gallery **/
+.home .gallery-section{
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+/** Front Page Reservation **/
+.location-reservation{
+    background-image: url('img/ingredients.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+.home .reservation-info {
+    margin-left: 0;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+.home .reservation-form h2{
+    text-align: center;
+    font-size: 3.2rem;
+    color: var(--black);
+}
+/** Feedback Page **/
+.page-template-page-feedback .reservation-info {
+    margin-left: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
